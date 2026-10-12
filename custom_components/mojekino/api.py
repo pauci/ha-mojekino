@@ -216,6 +216,9 @@ class _FilmListParser(HTMLParser):
         c = self._current
         if c is None:
             return
+        if tag == "div" and "programKina-datum" in classes:
+            # Dates follow; some sites repeat the badges for each screening there.
+            c["dates"] = True
         if tag == "a" and "fancybox" in classes:
             c.setdefault("poster", urljoin(self.base_url, a.get("href", "")))
             c.setdefault("original_title", _clean(a.get("title", "")))
@@ -226,7 +229,12 @@ class _FilmListParser(HTMLParser):
             self._text = ""
         elif tag == "h1" and "title" not in c:
             self._capture = "h1"
-        elif tag == "span" and "btn" in classes and "price" not in classes:
+        elif (
+            tag == "span"
+            and "btn" in classes
+            and "price" not in classes
+            and not c.get("dates")
+        ):
             self._capture = "tag"
             self._tag_title = _clean(a.get("title", ""))
             self._text = ""
@@ -462,6 +470,11 @@ class MojeKinoClient:
             total = int(first.get("iTotalDisplayRecords", 0))
         except TypeError, ValueError:
             total = 0
+        if total and not films:
+            # E.g. the ``kultura_v1`` template of theatres and culture houses.
+            raise MojeKinoNotSupportedError(
+                "The program lists entries in a layout that is not supported"
+            )
         page = 1
         while len(films) < total and page < MAX_PAGES:
             page += 1

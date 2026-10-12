@@ -15,7 +15,7 @@
     },
     "error": {
       "cannot_connect": "Nepodarilo sa pripojiť",
-      "not_supported": "Táto stránka nie je web kina na systéme MojeKino.",
+      "not_supported": "Táto stránka nie je web kina na systéme MojeKino, alebo jej program používa rozloženie, ktoré integrácia zatiaľ nepodporuje (napríklad weby divadiel a kultúrnych domov).",
       "no_program": "Na tejto stránke sa nenašiel žiadny program.",
       "unknown": "Neočakávaná chyba"
     },

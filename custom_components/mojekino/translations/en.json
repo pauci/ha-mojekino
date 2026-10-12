@@ -15,7 +15,7 @@
     },
     "error": {
       "cannot_connect": "Failed to connect",
-      "not_supported": "This page is not a MojeKino cinema website.",
+      "not_supported": "This website is not a MojeKino cinema, or its program uses a layout this integration does not support (such as the one used by theatres and culture houses).",
       "no_program": "No program was found on this website.",
       "unknown": "Unexpected error"
     },

@@ -118,3 +118,18 @@ def test_thumbnail_url() -> None:
     assert thumbnail_url(base + "nahlad_abc.jpg") == base + "nahlad_abc.jpg"
     assert thumbnail_url("https://example.sk/a.jpg") == "https://example.sk/a.jpg"
     assert thumbnail_url("") == ""
+
+
+def test_parse_films_ignores_badges_of_screenings() -> None:
+    fragment = (
+        '<div class="subbox" data-film="7"><h1><a href="/klient-1/kino-2/stranka-3/'
+        'film-7">Bojovník</a></h1><div class="iconss">'
+        '<span class="btn" title="2D">2D</span>'
+        '<span class="btn" title="Originálna verzia">OR</span></div>'
+        '<div class="padding program_resp programKina-datum"><div class="icons">'
+        '<span class="btn">2D</span><span class="btn">OR</span></div>'
+        '<span class="btn price" data-id="1">7,00 €</span></div></div>'
+    )
+    (film,) = parse_films(fragment, BASE)
+    assert film.tags == ("2D", "OR")
+    assert film.tag_titles == ("2D", "Originálna verzia")

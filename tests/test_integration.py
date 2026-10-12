@@ -120,6 +120,29 @@ async def test_config_flow(
     assert result["reason"] == "already_configured"
 
 
+KULTURA = {
+    "stav": "ok",
+    "iTotalDisplayRecords": "18",
+    "tabs": "",
+    "html": '<div class="media"><h2 class="media-heading">'
+    '<a href="/event/828736/fragile-peter-lipa">FRAGILE</a></h2></div>',
+}
+
+
+async def test_config_flow_unsupported_layout(
+    hass: HomeAssistant, aioclient_mock: AiohttpClientMocker
+) -> None:
+    aioclient_mock.get(BASE + "/", text=load("bs_home.html"))
+    aioclient_mock.get(PROGRAM, json=KULTURA)
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN, context={"source": SOURCE_USER}
+    )
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_URL: BASE + "/"}
+    )
+    assert result["errors"] == {"base": "not_supported"}
+
+
 @pytest.mark.parametrize(
     ("response", "error"),
     [
