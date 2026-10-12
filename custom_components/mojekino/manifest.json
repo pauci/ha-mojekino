@@ -1,0 +1,12 @@
+{
+  "domain": "mojekino",
+  "name": "MojeKino",
+  "codeowners": ["@pauci"],
+  "config_flow": true,
+  "documentation": "https://github.com/pauci/ha-mojekino",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/pauci/ha-mojekino/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

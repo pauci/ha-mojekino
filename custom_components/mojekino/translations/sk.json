@@ -1,0 +1,66 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Zadajte webovú stránku kina, ktoré používa systém Ticketware MojeKino (odkazy na vstupenky vedú na system.cinemaware.eu). Filmy sa hľadajú aj na zadanej stránke, preto je najlepšie zadať stránku s programom kina.",
+        "data": {
+          "url": "URL"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "url": "URL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepodarilo sa pripojiť",
+      "not_supported": "Táto stránka nie je web kina na systéme MojeKino.",
+      "no_program": "Na tejto stránke sa nenašiel žiadny program.",
+      "unknown": "Neočakávaná chyba"
+    },
+    "abort": {
+      "already_configured": "Služba je už nakonfigurovaná",
+      "reconfigure_successful": "Opätovná konfigurácia bola úspešná",
+      "wrong_cinema": "Táto stránka patrí inému kinu."
+    }
+  },
+  "entity": {
+    "image": {
+      "next_film": {
+        "name": "Ďalší film",
+        "state_attributes": {
+          "film": {
+            "name": "Film"
+          },
+          "start_time": {
+            "name": "Začiatok"
+          },
+          "film_url": {
+            "name": "Stránka filmu"
+          },
+          "ticket_url": {
+            "name": "Vstupenky"
+          },
+          "tags": {
+            "name": "Označenia"
+          },
+          "tag_titles": {
+            "name": "Význam označení"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "program": {
+        "name": "Program",
+        "unit_of_measurement": "predstavení",
+        "state_attributes": {
+          "screenings": {
+            "name": "Predstavenia"
+          }
+        }
+      }
+    }
+  }
+}

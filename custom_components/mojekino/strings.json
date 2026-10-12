@@ -1,0 +1,66 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Enter the website of a cinema that uses the Ticketware MojeKino system (the ticket links point to system.cinemaware.eu). The page you enter is also searched for films, so the cinema's program page works best.",
+        "data": {
+          "url": "[%key:common::config_flow::data::url%]"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "url": "[%key:common::config_flow::data::url%]"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "not_supported": "This page is not a MojeKino cinema website.",
+      "no_program": "No program was found on this website.",
+      "unknown": "[%key:common::config_flow::error::unknown%]"
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_service%]",
+      "reconfigure_successful": "[%key:common::config_flow::abort::reconfigure_successful%]",
+      "wrong_cinema": "This website belongs to a different cinema."
+    }
+  },
+  "entity": {
+    "image": {
+      "next_film": {
+        "name": "Next film",
+        "state_attributes": {
+          "film": {
+            "name": "Film"
+          },
+          "start_time": {
+            "name": "Start"
+          },
+          "film_url": {
+            "name": "Film page"
+          },
+          "ticket_url": {
+            "name": "Tickets"
+          },
+          "tags": {
+            "name": "Badges"
+          },
+          "tag_titles": {
+            "name": "Badge meanings"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "program": {
+        "name": "Program",
+        "unit_of_measurement": "screenings",
+        "state_attributes": {
+          "screenings": {
+            "name": "Screenings"
+          }
+        }
+      }
+    }
+  }
+}

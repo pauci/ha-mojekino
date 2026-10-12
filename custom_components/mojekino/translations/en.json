@@ -1,0 +1,66 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Enter the website of a cinema that uses the Ticketware MojeKino system (the ticket links point to system.cinemaware.eu). The page you enter is also searched for films, so the cinema's program page works best.",
+        "data": {
+          "url": "URL"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "url": "URL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "not_supported": "This page is not a MojeKino cinema website.",
+      "no_program": "No program was found on this website.",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Service is already configured",
+      "reconfigure_successful": "Re-configuration was successful",
+      "wrong_cinema": "This website belongs to a different cinema."
+    }
+  },
+  "entity": {
+    "image": {
+      "next_film": {
+        "name": "Next film",
+        "state_attributes": {
+          "film": {
+            "name": "Film"
+          },
+          "start_time": {
+            "name": "Start"
+          },
+          "film_url": {
+            "name": "Film page"
+          },
+          "ticket_url": {
+            "name": "Tickets"
+          },
+          "tags": {
+            "name": "Badges"
+          },
+          "tag_titles": {
+            "name": "Badge meanings"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "program": {
+        "name": "Program",
+        "unit_of_measurement": "screenings",
+        "state_attributes": {
+          "screenings": {
+            "name": "Screenings"
+          }
+        }
+      }
+    }
+  }
+}
